@@ -124,7 +124,7 @@ const difficulties = [
         </motion.div>
       </div>
 
-      <motion.div
+<motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -173,59 +173,60 @@ const difficulties = [
           </div>
         </motion.div>
 
-      {/* Difficulty Selection */}
-      <motion.div variants={itemVariants}>
-        <Text variant="heading" size="lg" weight="semibold" className="mb-4">
-          Select difficulty level
-        </Text>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {difficulties.map((difficulty) => (
-            <motion.button
-              key={difficulty.id}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => onDifficultyChange(difficulty.id)}
-              className={`
-                p-4 rounded-xl border-2 transition-all duration-200 text-left
-                ${selectedDifficulty === difficulty.id
-                  ? 'border-secondary-500 bg-secondary-50 shadow-md'
-                  : 'border-surface-200 bg-white hover:border-secondary-300 hover:bg-secondary-25'
-                }
-              `}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <Text 
-                  variant="body" 
-                  size="base" 
-                  weight="semibold"
-                  color={selectedDifficulty === difficulty.id ? 'secondary' : 'default'}
-                >
-                  {difficulty.label}
+        {/* Difficulty Selection */}
+        <motion.div variants={itemVariants}>
+          <Text variant="heading" size="lg" weight="semibold" className="mb-4">
+            Select difficulty level
+          </Text>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {difficulties.map((difficulty) => (
+              <motion.button
+                key={difficulty.id}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => onDifficultyChange(difficulty.id)}
+                className={`
+                  p-4 rounded-xl border-2 transition-all duration-200 text-left
+                  ${selectedDifficulty === difficulty.id
+                    ? 'border-secondary-500 bg-secondary-50 shadow-md'
+                    : 'border-surface-200 bg-white hover:border-secondary-300 hover:bg-secondary-25'
+                  }
+                `}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <Text 
+                    variant="body" 
+                    size="base" 
+                    weight="semibold"
+                    color={selectedDifficulty === difficulty.id ? 'secondary' : 'default'}
+                  >
+                    {difficulty.label}
+                  </Text>
+                  <Badge variant={difficulty.id}>{difficulty.label}</Badge>
+                </div>
+                <Text variant="body" size="sm" color="muted">
+                  {difficulty.description}
                 </Text>
-                <Badge variant={difficulty.id}>{difficulty.label}</Badge>
-              </div>
-              <Text variant="body" size="sm" color="muted">
-                {difficulty.description}
-              </Text>
-            </motion.button>
-          ))}
-        </div>
-      </motion.div>
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
 
-      {/* Start Button */}
-      <motion.div variants={itemVariants} className="pt-4">
-        <Button
-          variant="primary"
-          size="large"
-          icon="MessageCircle"
-          onClick={onStartConversation}
-          disabled={!selectedTopic || !selectedDifficulty}
-          className="w-full md:w-auto"
-        >
-          Start Conversation
-        </Button>
+        {/* Start Button */}
+        <motion.div variants={itemVariants} className="pt-4">
+          <Button
+            variant="primary"
+            size="large"
+            icon="MessageCircle"
+            onClick={onStartConversation}
+            disabled={!selectedTopic || !selectedDifficulty}
+            className="w-full md:w-auto"
+          >
+            Start Conversation
+          </Button>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
