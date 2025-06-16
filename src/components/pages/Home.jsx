@@ -129,9 +129,9 @@ const LanguageSelector = () => {
         title: 'French',
         description: 'Master the language of romance and diplomacy',
         icon: 'Globe',
-        color: 'from-blue-500 to-red-500',
+color: 'from-blue-500 to-red-500',
         flag: '🇫🇷',
-        available: false
+        available: true
       },
       {
         id: 'german',
@@ -140,7 +140,7 @@ const LanguageSelector = () => {
         icon: 'Globe',
         color: 'from-black to-red-500',
         flag: '🇩🇪',
-        available: false
+        available: true
       },
       {
         id: 'italian',
@@ -173,9 +173,9 @@ const LanguageSelector = () => {
             </div>
             <Text variant="display" size="3xl" weight="bold" className="mb-4">
               Choose Your Target Language
-            </Text>
+</Text>
             <Text variant="body" size="lg" color="muted" className="max-w-2xl mx-auto">
-              Select the language you want to learn. We'll start with Spanish and add more languages soon.
+              Select the language you want to learn. Choose from Spanish, French, or German to start your language learning journey.
             </Text>
           </motion.div>
         </div>
@@ -246,12 +246,23 @@ const LanguageSelector = () => {
     );
   };
 
-  const LearningModeSelector = () => {
+const LearningModeSelector = () => {
+    const getLanguageName = () => {
+      switch(selectedLanguage) {
+        case 'spanish': return 'Spanish';
+        case 'french': return 'French';
+        case 'german': return 'German';
+        default: return 'Spanish';
+      }
+    };
+
+    const languageName = getLanguageName();
+
     const learningModes = [
       {
         id: 'vocabulary',
         title: 'Vocabulary Builder',
-        description: 'Learn essential Spanish words with interactive flashcards and exercises',
+        description: `Learn essential ${languageName} words with interactive flashcards and exercises`,
         icon: 'Brain',
         color: 'from-orange-500 to-red-500',
         available: true
@@ -259,7 +270,7 @@ const LanguageSelector = () => {
       {
         id: 'grammar',
         title: 'Grammar Exercises',
-        description: 'Master Spanish grammar with targeted lessons and practice',
+        description: `Master ${languageName} grammar with targeted lessons and practice`,
         icon: 'BookOpen',
         color: 'from-green-500 to-teal-500',
         available: true
@@ -267,7 +278,7 @@ const LanguageSelector = () => {
       {
         id: 'quiz',
         title: 'Knowledge Quiz',
-        description: 'Test your understanding with comprehensive Spanish quizzes',
+        description: `Test your understanding with comprehensive ${languageName} quizzes`,
         icon: 'CheckCircle',
         color: 'from-purple-500 to-pink-500',
         available: true
@@ -303,9 +314,9 @@ const LanguageSelector = () => {
             </div>
 <Text variant="display" size="3xl" weight="bold" className="mb-4">
               Choose Your Learning Path
-            </Text>
+</Text>
             <Text variant="body" size="lg" color="muted" className="max-w-2xl mx-auto">
-              Select how you want to learn Spanish today. Each mode offers focused practice for different skills.
+              Select how you want to learn {getLanguageName()} today. Each mode offers focused practice for different skills.
             </Text>
           </motion.div>
         </div>
@@ -570,21 +581,23 @@ className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             <div className="bg-white rounded-xl shadow-sm border border-surface-200 p-8">
               <div className="flex items-center justify-between mb-6">
-                <div>
+<div>
                   <Text variant="heading" size="2xl" weight="bold" className="mb-2">
-                    {selectedLearningMode === 'vocabulary' && 'Spanish Vocabulary Builder'}
-                    {selectedLearningMode === 'grammar' && 'Spanish Grammar Exercises'}
-                    {selectedLearningMode === 'quiz' && 'Spanish Knowledge Quiz'}
+                    {selectedLearningMode === 'vocabulary' && `${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} Vocabulary Builder`}
+                    {selectedLearningMode === 'grammar' && `${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} Grammar Exercises`}
+                    {selectedLearningMode === 'quiz' && `${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} Knowledge Quiz`}
                   </Text>
                   <Text variant="body" size="lg" color="muted">
-                    {selectedLearningMode === 'vocabulary' && 'Learn essential Spanish words with interactive exercises'}
-                    {selectedLearningMode === 'grammar' && 'Master Spanish grammar with targeted practice'}
-                    {selectedLearningMode === 'quiz' && 'Test your Spanish knowledge and track your progress'}
+                    {selectedLearningMode === 'vocabulary' && `Learn essential ${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} words with interactive exercises`}
+                    {selectedLearningMode === 'grammar' && `Master ${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} grammar with targeted practice`}
+                    {selectedLearningMode === 'quiz' && `Test your ${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} knowledge and track your progress`}
                   </Text>
-                </div>
+</div>
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold text-sm">ES</span>
+                    <span className="text-white font-semibold text-sm">
+                      {selectedLanguage === 'spanish' ? 'ES' : selectedLanguage === 'french' ? 'FR' : 'DE'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -604,9 +617,9 @@ className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     {selectedLearningMode === 'quiz' && 'Ready to Test Your Knowledge!'}
                   </Text>
                   
-                  <Text variant="body" size="lg" color="muted" className="mb-6">
-                    {selectedLearningMode === 'vocabulary' && 'Start with basic Spanish words and phrases. Learn through flashcards, matching games, and contextual examples.'}
-                    {selectedLearningMode === 'grammar' && 'Practice Spanish grammar rules with interactive exercises. Focus on verb conjugations, sentence structure, and common patterns.'}
+<Text variant="body" size="lg" color="muted" className="mb-6">
+                    {selectedLearningMode === 'vocabulary' && `Start with basic ${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} words and phrases. Learn through flashcards, matching games, and contextual examples.`}
+                    {selectedLearningMode === 'grammar' && `Practice ${selectedLanguage === 'spanish' ? 'Spanish' : selectedLanguage === 'french' ? 'French' : 'German'} grammar rules with interactive exercises. Focus on verb conjugations, sentence structure, and common patterns.`}
                     {selectedLearningMode === 'quiz' && 'Challenge yourself with comprehensive quizzes covering vocabulary, grammar, and comprehension.'}
                   </Text>
 
@@ -643,9 +656,9 @@ className="grid grid-cols-1 md:grid-cols-2 gap-6"
                       {selectedLearningMode === 'quiz' && 'Quiz Categories'}
                     </Text>
                   </div>
-                  <Text variant="heading" size="2xl" weight="bold" color="primary">
-                    {selectedLearningMode === 'vocabulary' && '500+'}
-                    {selectedLearningMode === 'grammar' && '25+'}
+<Text variant="heading" size="2xl" weight="bold" color="primary">
+                    {selectedLearningMode === 'vocabulary' && (selectedLanguage === 'spanish' ? '500+' : selectedLanguage === 'french' ? '450+' : '400+')}
+                    {selectedLearningMode === 'grammar' && (selectedLanguage === 'spanish' ? '25+' : selectedLanguage === 'french' ? '22+' : '28+')}
                     {selectedLearningMode === 'quiz' && '10+'}
                   </Text>
                 </div>
@@ -656,8 +669,8 @@ className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     <Text variant="body" size="sm" weight="semibold">Estimated Time</Text>
                   </div>
                   <Text variant="heading" size="2xl" weight="bold" color="success">
-                    {selectedLearningMode === 'vocabulary' && '15-20 min'}
-                    {selectedLearningMode === 'grammar' && '20-25 min'}
+                    {selectedLearningMode === 'vocabulary' && (selectedLanguage === 'german' ? '20-25 min' : '15-20 min')}
+                    {selectedLearningMode === 'grammar' && (selectedLanguage === 'german' ? '25-30 min' : '20-25 min')}
                     {selectedLearningMode === 'quiz' && '10-15 min'}
                   </Text>
                 </div>
