@@ -1,0 +1,35 @@
+[
+  {
+    "Id": 1,
+    "topic": "Hobbies & Interests",
+    "difficulty": "beginner",
+    "startTime": "2024-01-20T10:00:00.000Z",
+    "stats": {
+      "messagesSent": 2,
+      "correctionsMade": 2,
+      "correctionsAccepted": 0
+    }
+  },
+  {
+    "Id": 2,
+    "topic": "Travel & Culture",
+    "difficulty": "intermediate",
+    "startTime": "2024-01-19T14:30:00.000Z",
+    "stats": {
+      "messagesSent": 8,
+      "correctionsMade": 5,
+      "correctionsAccepted": 4
+    }
+  },
+  {
+    "Id": 3,
+    "topic": "Business & Work",
+    "difficulty": "advanced",
+    "startTime": "2024-01-18T09:15:00.000Z",
+    "stats": {
+      "messagesSent": 15,
+      "correctionsMade": 3,
+      "correctionsAccepted": 3
+    }
+  }
+]

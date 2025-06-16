@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "messageId": 3,
+    "originalText": "discuss about",
+    "correctedText": "discuss",
+    "explanation": "The verb 'discuss' is transitive and doesn't need the preposition 'about' when followed by a direct object.",
+    "rule": "Transitive Verbs",
+    "accepted": false
+  },
+  {
+    "Id": 2,
+    "messageId": 3,
+    "originalText": "in free time",
+    "correctedText": "in my free time",
+    "explanation": "When talking about your own free time, it's more natural to use the possessive pronoun 'my'.",
+    "rule": "Possessive Pronouns",
+    "accepted": false
+  }
+]
